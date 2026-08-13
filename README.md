@@ -16,14 +16,34 @@ cluster CRC, pensados para poder reinstalar rápido cada vez que se actualiza CR
 | `06-keycloak-deployment.yaml` | Deployment de Keycloak `26.7.0` (modo `start-dev`) |
 | `07-keycloak-service.yaml` | Service ClusterIP `keycloak:8080` |
 | `08-keycloak-route.yaml` | Route edge TLS para acceso externo |
+| `install.ps1` / `uninstall.ps1` | Scripts para Windows PowerShell |
+| `install.sh` / `uninstall.sh` | Scripts equivalentes para bash |
 
 ## Requisitos previos
 
 - CRC corriendo (`crc start`) y logueado con `oc login -u kubeadmin ...`
 - Usuario con permisos para crear namespaces (o pedile a un admin que cree
   `keycloak-lab` de antemano)
+- `oc` en el PATH (tanto en PowerShell como en bash)
 
 ## Instalación
+
+**Windows / PowerShell:**
+
+```powershell
+git clone <tu-repo>
+cd keycloak-lab-crc
+.\install.ps1
+```
+
+Si PowerShell bloquea la ejecución de scripts, corré una sola vez (como admin
+o para el usuario actual):
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+**Linux / bash** (Fedora, WSL, etc.):
 
 ```bash
 git clone <tu-repo>
@@ -36,6 +56,10 @@ Al finalizar el script imprime la URL del Route. Login con el usuario definido
 en `manifests/05-keycloak-secret.yaml` (por defecto `admin` / `keycloak-admin-pass`).
 
 ## Desinstalación
+
+```powershell
+.\uninstall.ps1
+```
 
 ```bash
 ./uninstall.sh
