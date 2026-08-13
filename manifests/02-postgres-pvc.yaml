@@ -6,8 +6,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  # standard-csi es el StorageClass default en CRC (OpenShift Local)
-  storageClassName: standard-csi
   resources:
     requests:
       storage: 2Gi
