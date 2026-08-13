@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgresql-data
+  namespace: keycloak-lab
+spec:
+  accessModes:
+    - ReadWriteOnce
+  # standard-csi es el StorageClass default en CRC (OpenShift Local)
+  storageClassName: standard-csi
+  resources:
+    requests:
+      storage: 2Gi
