@@ -9,7 +9,7 @@ cluster CRC, pensados para poder reinstalar rápido cada vez que se actualiza CR
 |---|---|
 | `00-namespace.yaml` | Namespace `keycloak-lab` |
 | `01-postgres-secret.yaml` | Credenciales de Postgres |
-| `02-postgres-pvc.yaml` | PVC de 2Gi (`standard-csi`, storage class default de CRC) |
+| `02-postgres-pvc.yaml`           | PVC de 2Gi (usa el StorageClass default del cluster, sin fijar nombre)                                  |
 | `03-postgres-deployment.yaml` | Deployment de Postgres (imagen `quay.io/sclorg/postgresql-16-c9s`, compatible con SCC `restricted-v2`) |
 | `04-postgres-service.yaml` | Service ClusterIP `postgresql:5432` |
 | `05-keycloak-secret.yaml` | Credenciales de admin de Keycloak y de conexión a DB |
